@@ -1,5 +1,7 @@
+import 'package:edwin_componant_admin/all_files/add_items.dart';
 import 'package:edwin_componant_admin/all_files/components.dart';
 import 'package:edwin_componant_admin/all_files/user_data.dart';
+import 'package:edwin_componant_admin/all_files/user_details.dart';
 import 'package:flutter/material.dart';
 
 class AdminMain extends StatefulWidget {
@@ -84,7 +86,7 @@ class _AdminMainState extends State<AdminMain> {
                         fontSize: 15),
                   ),
                   subtitle: Text(
-                    'user information',
+                    'user activity',
                     style: TextStyle(
                         color: Colors.grey,
                         fontWeight: FontWeight.normal,
@@ -92,38 +94,48 @@ class _AdminMainState extends State<AdminMain> {
                   ),
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.create_new_folder),
-                title: Text(
-                  'Add Items',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
-                subtitle: Text(
-                  'to add new items',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 13),
+              TextButton(
+                onPressed: (){
+                  Navigator.push( context , MaterialPageRoute(builder: (context) => const AddItems()));
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.create_new_folder),
+                  title: Text(
+                    'Add Items',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  subtitle: Text(
+                    'to add new items',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 13),
+                  ),
                 ),
               ),
-              const ListTile(
-                leading: Icon(Icons.account_tree),
-                title: Text(
-                  'All Components',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
-                subtitle: Text(
-                  'existing components',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 13),
+              TextButton(
+                onPressed: (){
+                  Navigator.push( context , MaterialPageRoute(builder: (context) => const UserDetails()));
+                },
+                child: const ListTile(
+                  leading: Icon(Icons.account_tree),
+                  title: Text(
+                    'User Details',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15),
+                  ),
+                  subtitle: Text(
+                    'user information',
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 13),
+                  ),
                 ),
               ),
             ],

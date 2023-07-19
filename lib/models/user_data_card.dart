@@ -15,36 +15,33 @@ class UserDataCard extends StatefulWidget {
 }
 
 class _UserDataCardState extends State<UserDataCard> {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin:const EdgeInsets.only(left: 20 , right: 20),
       width: double.infinity,
-      height: 150,
+      height: 350,
       child: Card(
         child: Row(
           children: [
             Container(
               margin:const EdgeInsets.only(left: 20),
               width: 300,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black)
-              ),
               child: Text(widget.email),
             ),
             Expanded(
               child: Container(
                 margin:const EdgeInsets.only(left: 20),
-                height: 100,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black)
-                ),
+                height: 300,
                 child: Column(
                   children: [
                     SingleChildScrollView(
                       child: SizedBox(
                         width: double.infinity,
-                        height: 90,
+                        height: 290,
                         child: ListView.builder(itemBuilder: (context , index){
                               return  SizedBox(
                                 width: 100,
@@ -55,33 +52,26 @@ class _UserDataCardState extends State<UserDataCard> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          margin: EdgeInsets.only(left: 27),
+                                          margin:const EdgeInsets.only(left: 27),
                                           width: 60,
                                           height: 60,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                          ),
+                                          child: Image.network(widget.item[index]['image']),
                                         ),
                                         Container(
                                           width: 1150,
                                           margin:const EdgeInsets.only(left: 20),
                                           height: 60,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                          ),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              Text('data'),
-                                              Text('Time')
+                                              Text(widget.item[index]['name']),
+                                              Text(widget.item[index]['subtitle'])
                                             ],
                                           ),
                                         ),
                                         Container(
                                           margin:const EdgeInsets.only(left: 20),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(color: Colors.black)
-                                          ),
                                           child: Text('date and time'),
                                         )
                                       ],
@@ -89,7 +79,7 @@ class _UserDataCardState extends State<UserDataCard> {
                                   ),
                                 ),
                               );
-                          }, itemCount: 5,),
+                          }, itemCount: widget.item.length,),
                       ),
                     ),
                   ],
@@ -102,9 +92,9 @@ class _UserDataCardState extends State<UserDataCard> {
               height: 30,
               decoration: BoxDecoration(
                 color: Colors.red.shade600,
-                borderRadius: BorderRadius.all(Radius.circular(6))
+                borderRadius:const BorderRadius.all(Radius.circular(6))
               ),
-              child: TextButton(onPressed: (){},child: Text('Returned' , style: TextStyle(color: Colors.white),),),
+              child: TextButton(onPressed: (){},child:const Text('Returned' , style: TextStyle(color: Colors.white),),),
             )
 
           ],
