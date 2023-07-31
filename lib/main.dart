@@ -1,4 +1,5 @@
 import 'package:edwin_componant_admin/all_files/admin_main.dart';
+import 'package:edwin_componant_admin/all_files/components.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +12,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-     home: AdminMain(),
+     home:const AdminMain(),
+     routes: {
+      '/component':(context) => const Components()
+     },
     );
   }
 }

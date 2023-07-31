@@ -3,4 +3,5 @@ const componants = '$url/components/getcomponent';
 const addcomp = '$url/components/addcomponent'; 
 const userdata = '$url/comp/getuserdata';
 const userdetails = '$url/userdetails';
-const deletedata = '$url/getcomponent/delete';
+const deletedata = '$url/components/getcomponent/delete';
+const addmaterials = '$url/materials/addmaterials';

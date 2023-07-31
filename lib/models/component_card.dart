@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:edwin_componant_admin/all_files/components.dart';
 import 'package:edwin_componant_admin/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ComopnentCard extends StatefulWidget {
+  
   final String title;
   final String subtitle;
   final String image;
@@ -20,17 +20,13 @@ class ComopnentCard extends StatefulWidget {
 }
 
 class _ComopnentCardState extends State<ComopnentCard> {
-void deleteData()async{
- var resbody = {
-    'name':widget.title
-  };
-var send = await http.post(Uri.parse(deletedata),
-          headers: {"Content-Type": "application/json"},
-          body: jsonEncode(resbody));
-      var response = jsonDecode(send.body);
-      print(response);
-
-}
+  void deleteData() async {
+    var resbody = {'name': widget.title};
+    var send = await http.post(Uri.parse(deletedata),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(resbody));
+    var response = jsonDecode(send.body);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +81,20 @@ var send = await http.post(Uri.parse(deletedata),
                 onPressed: () {
                   deleteData();
                   setState(() {
-                   
+                    var snackBar = const SnackBar(
+                      content: Text(
+                        'Deleted Successfully',
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      backgroundColor: Colors.white,
+                      elevation: 10,
+                      behavior: SnackBarBehavior.floating,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.popAndPushNamed(context, '/component' );
+                    data.removeWhere((element) => element["name"] == widget.title);
                   });
                 },
                 child: const Text(
