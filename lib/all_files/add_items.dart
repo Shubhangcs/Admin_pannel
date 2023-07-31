@@ -30,11 +30,8 @@ class _AddItemsState extends State<AddItems> {
           body: jsonEncode(resbody));
       var response = jsonDecode(send.body);
       print(response);
-    } else {
-      print('no');
-    }
   }
-
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

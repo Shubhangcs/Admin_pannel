@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:edwin_componant_admin/all_files/components.dart';
+import 'package:edwin_componant_admin/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class ComopnentCard extends StatefulWidget {
   final String title;
@@ -16,6 +20,18 @@ class ComopnentCard extends StatefulWidget {
 }
 
 class _ComopnentCardState extends State<ComopnentCard> {
+void deleteData()async{
+ var resbody = {
+    'name':widget.title
+  };
+var send = await http.post(Uri.parse(deletedata),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(resbody));
+      var response = jsonDecode(send.body);
+      print(response);
+
+}
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,8 +45,6 @@ class _ComopnentCardState extends State<ComopnentCard> {
               margin: const EdgeInsets.only(left: 20),
               width: 60,
               height: 60,
-              decoration:
-                  BoxDecoration(border: Border.all(color: Colors.black)),
               child: Image.network(widget.image),
             ),
             Expanded(
@@ -69,8 +83,9 @@ class _ComopnentCardState extends State<ComopnentCard> {
               height: 30,
               child: TextButton(
                 onPressed: () {
+                  deleteData();
                   setState(() {
-                    data.remove({"name": widget.title , "image":widget.image , "subtitle":widget.subtitle});
+                   
                   });
                 },
                 child: const Text(

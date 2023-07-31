@@ -17,7 +17,16 @@ class _UserDetailsState extends State<UserDetails> {
         title: Text('User Details'),
       ),
       body: Container(
-        
+        child: ListView.builder(itemBuilder: (context , index){
+            return Container(
+              margin: EdgeInsets.only(left: 60 , right: 60 , top: 10),
+              width: 100,
+              height: 80,
+              child: Column(
+                
+              ),
+            );
+        }, itemCount: 5,),
       ),
     );
   }
