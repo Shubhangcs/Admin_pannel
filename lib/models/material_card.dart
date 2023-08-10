@@ -1,32 +1,33 @@
 import 'dart:convert';
-import 'package:edwin_componant_admin/all_files/components.dart';
+
+import 'package:edwin_componant_admin/all_files/material_view.dart';
 import 'package:edwin_componant_admin/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class ComopnentCard extends StatefulWidget {
+class MaterialCard extends StatefulWidget {
   final String title;
   final String subtitle;
   final String image;
-  const ComopnentCard(
+  const MaterialCard(
       {super.key,
       required this.title,
       required this.subtitle,
       required this.image});
 
   @override
-  State<ComopnentCard> createState() => _ComopnentCardState();
+  State<MaterialCard> createState() => _MaterialCardState();
 }
 
-class _ComopnentCardState extends State<ComopnentCard> {
-  void deleteData() async {
+class _MaterialCardState extends State<MaterialCard> {
+    void deleteData() async {
     var resbody = {'name': widget.title};
-    var send = await http.post(Uri.parse(deletecomponents),
+    var send = await http.post(Uri.parse(deletematerials),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode(resbody));
     var response = jsonDecode(send.body);
     if (response['status']) {
-      data.removeWhere((element) => element["name"] == widget.title);
+      materials.removeWhere((element) => element["name"] == widget.title);
     } else {
       setState(() {
         error();
@@ -51,7 +52,6 @@ class _ComopnentCardState extends State<ComopnentCard> {
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -104,7 +104,7 @@ class _ComopnentCardState extends State<ComopnentCard> {
               child: TextButton(
                 onPressed: () {
                   deleteData();
-                  Navigator.popAndPushNamed(context, '/component');
+                  Navigator.popAndPushNamed(context, '/materialview');
                 },
                 child: const Text(
                   'Delete',

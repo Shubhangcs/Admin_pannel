@@ -1,5 +1,6 @@
 import 'package:edwin_componant_admin/all_files/add_items.dart';
 import 'package:edwin_componant_admin/all_files/components.dart';
+import 'package:edwin_componant_admin/all_files/material_view.dart';
 import 'package:edwin_componant_admin/all_files/user_data.dart';
 import 'package:edwin_componant_admin/all_files/user_details.dart';
 import 'package:flutter/material.dart';
@@ -29,49 +30,25 @@ class _AdminMainState extends State<AdminMain> {
         child: ListView(
           children: [
             DrawerHeader(
-                child: Row(
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 50),
-                  width: 80,
-                  height: 80,
-                  child: Image.asset('logo.png'),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(top: 50, left: 20),
-                  child: const Text(
-                    'Edwin\'s Component \nLibrary',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold),
+              child: Row(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    width: 80,
+                    height: 80,
+                    child: Image.asset('logo.png'),
                   ),
-                ),
-              ],
-            )),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Components()),
-                );
-              },
-              child: const ListTile(
-                leading: Icon(Icons.desktop_mac_sharp),
-                title: Text(
-                  'Components',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15),
-                ),
-                subtitle: Text(
-                  'the user components',
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 13),
-                ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 50, left: 20),
+                    child: const Text(
+                      'Edwin\'s Component \nLibrary',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
               ),
             ),
             TextButton(
@@ -115,6 +92,54 @@ class _AdminMainState extends State<AdminMain> {
                 ),
                 subtitle: Text(
                   'user activity',
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 13),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Components()),
+                );
+              },
+              child: const ListTile(
+                leading: Icon(Icons.desktop_mac_sharp),
+                title: Text(
+                  'Components',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+                subtitle: Text(
+                  'the user components',
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 13),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MaterialViews()));
+              },
+              child: const ListTile(
+                leading: Icon(Icons.library_books_outlined),
+                title: Text(
+                  'Materials',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15),
+                ),
+                subtitle: Text(
+                  'new study materials',
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.normal,

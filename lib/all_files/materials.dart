@@ -20,10 +20,37 @@ class _MaterialsState extends State<Materials> {
       "link":materialPath.text
     };
     var response = await http.post(Uri.parse(addmaterials) , body: jsonEncode(res) , headers: {"Content-Type":"application/json"});
-    print(jsonDecode(response.body));
+    var jsonResponse = jsonDecode(response.body);
+    if(jsonResponse['status']){
+      navigateTo();
+    }
+    else{
+      showSnack();
+    }
+  }
+
+  void navigateTo(){
+    Navigator.popAndPushNamed(context, '/materialpage');
   }
 
 
+  void showSnack(){
+     var snackBar = const SnackBar(
+      content: Text(
+        'Error occured',
+        style: TextStyle(color: Colors.black),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 10,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
 
   final materialName = TextEditingController();

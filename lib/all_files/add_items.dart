@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:edwin_componant_admin/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -29,9 +28,35 @@ class _AddItemsState extends State<AddItems> {
           headers: {"Content-Type": "application/json"},
           body: jsonEncode(resbody));
       var response = jsonDecode(send.body);
-      print(response);
+      if (response['status']) {
+        navigate();
+      } else {
+        resError();
+      }
+    }
   }
+  void navigate(){
+  Navigator.popAndPushNamed(context, '/addcomponents');
   }
+
+  void resError() {
+    var snackBar = const SnackBar(
+      content: Text(
+        'Error occured during sending the data',
+        style: TextStyle(color: Colors.black),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 10,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
